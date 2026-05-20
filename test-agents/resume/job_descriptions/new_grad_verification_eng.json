@@ -1,0 +1,24 @@
+{
+  "title": "Verification Engineer (New Grad)",
+  "description": "We are looking for a new graduate Verification Engineer to join our software quality and verification team. You will design and implement test strategies, build automated test frameworks, write and maintain test suites, and work closely with development teams to ensure software quality across our products. This is an entry-level position with mentorship from senior engineers.",
+  "requirements": [
+    "Bachelor's degree in Computer Science, Computer Engineering, Software Engineering, or related field (recent graduate or graduating within 6 months)",
+    "Proficiency in at least one programming language (Python, Java, C++, or JavaScript/TypeScript)",
+    "Understanding of software testing fundamentals (unit, integration, system, regression testing)",
+    "Experience writing automated tests in an academic or internship setting",
+    "Familiarity with version control (Git)",
+    "Basic understanding of CI/CD concepts and build pipelines",
+    "Strong debugging, analytical, and problem-solving skills",
+    "Ability to read and interpret software requirements and design specifications"
+  ],
+  "preferred_qualifications": [
+    "Experience with test frameworks (pytest, JUnit, Selenium, Cypress, or similar)",
+    "Familiarity with REST API testing and tools (Postman, requests library, etc.)",
+    "Exposure to containerization (Docker) and its use in test environments",
+    "Understanding of code coverage tools and metrics",
+    "Experience with scripting for test automation (Bash, Python)",
+    "Familiarity with issue tracking and test management tools (Jira, TestRail, or similar)",
+    "Internship or co-op experience in a software testing or QA role",
+    "Exposure to performance or load testing concepts"
+  ]
+}

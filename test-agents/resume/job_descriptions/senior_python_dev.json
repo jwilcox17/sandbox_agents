@@ -1,0 +1,22 @@
+{
+  "title": "Senior Python Developer",
+  "description": "We are seeking an experienced Senior Python Developer to join our backend engineering team. You will design and build scalable microservices, mentor junior developers, and contribute to architectural decisions for our cloud-native platform.",
+  "requirements": [
+    "5+ years of professional Python development experience",
+    "Strong experience with web frameworks (Django, FastAPI, or Flask)",
+    "Experience designing and building RESTful APIs",
+    "Proficiency with SQL databases (PostgreSQL preferred)",
+    "Experience with containerization (Docker) and orchestration (Kubernetes)",
+    "Familiarity with CI/CD pipelines and automated testing",
+    "Strong understanding of software design patterns and SOLID principles",
+    "Bachelor's degree in Computer Science or equivalent experience"
+  ],
+  "preferred_qualifications": [
+    "Experience with event-driven architectures (Kafka, RabbitMQ)",
+    "Familiarity with cloud platforms (AWS, GCP, or Azure)",
+    "Experience with infrastructure-as-code (Terraform, Pulumi)",
+    "Contributions to open-source projects",
+    "Experience mentoring junior developers",
+    "Knowledge of machine learning frameworks (PyTorch, TensorFlow)"
+  ]
+}

@@ -1,0 +1,76 @@
+2026-05-04 21:07:58,217 - __main__ - INFO - Starting Fantasy Baseball MCP Server...
+2026-05-04 21:07:58,226 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-05-04 21:07:58,226 - __main__ - INFO - Listing tools
+2026-05-04 21:08:02,268 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:08:02,270 - __main__ - INFO - Calling tool: get_league_leaders with arguments: {'stat_type': 'homeRuns', 'season': 2025}
+2026-05-04 21:08:02,336 - __main__ - ERROR - API request error retrieving league leaders: HTTPSConnectionPool(host='statsapi.mlb.com', port=443): Max retries exceeded with url: /api/v1/stats/leaders?leaderCategories=homeRuns&limit=10&season=2025 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2026-05-04 21:08:02,337 - __main__ - INFO - Tool get_league_leaders executed successfully
+2026-05-04 21:08:02,338 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:08:02,345 - __main__ - INFO - Calling tool: get_league_leaders with arguments: {'stat_type': 'battingAverage', 'season': 2025}
+2026-05-04 21:08:02,370 - __main__ - ERROR - API request error retrieving league leaders: HTTPSConnectionPool(host='statsapi.mlb.com', port=443): Max retries exceeded with url: /api/v1/stats/leaders?leaderCategories=battingAverage&limit=10&season=2025 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2026-05-04 21:08:02,371 - __main__ - INFO - Tool get_league_leaders executed successfully
+2026-05-04 21:08:02,372 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:08:02,373 - __main__ - INFO - Calling tool: get_league_leaders with arguments: {'stat_type': 'earnedRunAverage', 'season': 2025}
+2026-05-04 21:08:02,396 - __main__ - ERROR - API request error retrieving league leaders: HTTPSConnectionPool(host='statsapi.mlb.com', port=443): Max retries exceeded with url: /api/v1/stats/leaders?leaderCategories=earnedRunAverage&limit=10&season=2025 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2026-05-04 21:08:02,396 - __main__ - INFO - Tool get_league_leaders executed successfully
+2026-05-04 21:08:02,397 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:08:02,398 - __main__ - INFO - Calling tool: get_league_leaders with arguments: {'stat_type': 'strikeOuts', 'season': 2025}
+2026-05-04 21:08:02,422 - __main__ - ERROR - API request error retrieving league leaders: HTTPSConnectionPool(host='statsapi.mlb.com', port=443): Max retries exceeded with url: /api/v1/stats/leaders?leaderCategories=strikeOuts&limit=10&season=2025 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2026-05-04 21:08:02,422 - __main__ - INFO - Tool get_league_leaders executed successfully
+2026-05-04 21:08:02,424 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:08:02,425 - __main__ - INFO - Calling tool: search_multiple_players with arguments: {'names': ['Aaron Judge', 'Anthony Volpe', 'Jasson Dominguez', 'Matt Chapman', 'Jung Hoo Lee', 'Logan Webb', 'Willy Adames']}
+2026-05-04 21:08:02,447 - __main__ - ERROR - API request error during multiple player search: HTTPSConnectionPool(host='statsapi.mlb.com', port=443): Max retries exceeded with url: /api/v1/people/search?names=Aaron+Judge&limit=5 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2026-05-04 21:08:02,448 - __main__ - INFO - Tool search_multiple_players executed successfully
+2026-05-04 21:08:05,202 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:08:05,203 - __main__ - INFO - Calling tool: search_player with arguments: {'name': 'Aaron Judge'}
+2026-05-04 21:08:05,232 - __main__ - ERROR - API request error during player search: HTTPSConnectionPool(host='statsapi.mlb.com', port=443): Max retries exceeded with url: /api/v1/people/search?names=Aaron+Judge&limit=10 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2026-05-04 21:08:05,233 - __main__ - INFO - Tool search_player executed successfully
+2026-05-04 21:08:05,233 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:08:05,234 - __main__ - INFO - Calling tool: search_player with arguments: {'name': 'Anthony Volpe'}
+2026-05-04 21:08:05,257 - __main__ - ERROR - API request error during player search: HTTPSConnectionPool(host='statsapi.mlb.com', port=443): Max retries exceeded with url: /api/v1/people/search?names=Anthony+Volpe&limit=10 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2026-05-04 21:08:05,257 - __main__ - INFO - Tool search_player executed successfully
+2026-05-04 21:08:05,258 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:08:05,259 - __main__ - INFO - Calling tool: search_player with arguments: {'name': 'Jasson Dominguez'}
+2026-05-04 21:08:05,282 - __main__ - ERROR - API request error during player search: HTTPSConnectionPool(host='statsapi.mlb.com', port=443): Max retries exceeded with url: /api/v1/people/search?names=Jasson+Dominguez&limit=10 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2026-05-04 21:08:05,282 - __main__ - INFO - Tool search_player executed successfully
+2026-05-04 21:12:00,716 - __main__ - INFO - Starting Fantasy Baseball MCP Server...
+2026-05-04 21:12:00,725 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-05-04 21:12:00,725 - __main__ - INFO - Listing tools
+2026-05-04 21:12:04,686 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:12:04,688 - __main__ - INFO - Calling tool: get_league_leaders with arguments: {'stat_type': 'homeRuns', 'season': 2026}
+2026-05-04 21:12:04,910 - __main__ - INFO - Retrieved 13 leaders for homeRuns
+2026-05-04 21:12:04,911 - __main__ - INFO - Tool get_league_leaders executed successfully
+2026-05-04 21:12:04,912 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:12:04,913 - __main__ - INFO - Calling tool: get_league_leaders with arguments: {'stat_type': 'battingAverage', 'season': 2026}
+2026-05-04 21:12:05,065 - __main__ - INFO - Retrieved 11 leaders for battingAverage
+2026-05-04 21:12:05,067 - __main__ - INFO - Tool get_league_leaders executed successfully
+2026-05-04 21:12:05,068 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:12:05,069 - __main__ - INFO - Calling tool: get_league_leaders with arguments: {'stat_type': 'earnedRunAverage', 'season': 2026}
+2026-05-04 21:12:05,262 - __main__ - INFO - Retrieved 10 leaders for earnedRunAverage
+2026-05-04 21:12:05,263 - __main__ - INFO - Tool get_league_leaders executed successfully
+2026-05-04 21:12:05,264 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:12:05,265 - __main__ - INFO - Calling tool: get_league_leaders with arguments: {'stat_type': 'strikeOuts', 'season': 2026}
+2026-05-04 21:12:05,476 - __main__ - INFO - Retrieved 0 leaders for strikeOuts
+2026-05-04 21:12:05,477 - __main__ - INFO - Tool get_league_leaders executed successfully
+2026-05-04 21:12:05,478 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:12:05,480 - __main__ - INFO - Calling tool: search_multiple_players with arguments: {'names': ['Aaron Judge', 'Anthony Volpe', 'Jasson Dominguez', 'Matt Chapman', 'Jung Hoo Lee', 'Logan Webb', 'Willy Adames']}
+2026-05-04 21:12:05,612 - __main__ - INFO - Found 1 players matching 'Aaron Judge'
+2026-05-04 21:12:05,734 - __main__ - INFO - Found 1 players matching 'Anthony Volpe'
+2026-05-04 21:12:05,852 - __main__ - INFO - Found 1 players matching 'Jasson Dominguez'
+2026-05-04 21:12:05,969 - __main__ - INFO - Found 1 players matching 'Matt Chapman'
+2026-05-04 21:12:06,092 - __main__ - INFO - Found 1 players matching 'Jung Hoo Lee'
+2026-05-04 21:12:06,222 - __main__ - INFO - Found 1 players matching 'Logan Webb'
+2026-05-04 21:12:06,339 - __main__ - INFO - Found 1 players matching 'Willy Adames'
+2026-05-04 21:12:06,339 - __main__ - INFO - Successfully searched for 7 player names
+2026-05-04 21:12:06,341 - __main__ - INFO - Tool Willy Adames executed successfully
+2026-05-04 21:12:08,711 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-05-04 21:12:08,713 - __main__ - INFO - Calling tool: get_multiple_players_profiles with arguments: {'player_ids': ['592450', '683011', '691176', '656305', '808982', '657277', '642715'], 'season': 2026}
+2026-05-04 21:12:08,976 - __main__ - INFO - Successfully retrieved data for player 592450
+2026-05-04 21:12:09,226 - __main__ - INFO - Successfully retrieved data for player 683011
+2026-05-04 21:12:09,490 - __main__ - INFO - Successfully retrieved data for player 691176
+2026-05-04 21:12:09,764 - __main__ - INFO - Successfully retrieved data for player 656305
+2026-05-04 21:12:10,114 - __main__ - INFO - Successfully retrieved data for player 808982
+2026-05-04 21:12:10,368 - __main__ - INFO - Successfully retrieved data for player 657277
+2026-05-04 21:12:10,639 - __main__ - INFO - Successfully retrieved data for player 642715
+2026-05-04 21:12:10,641 - __main__ - INFO - Successfully retrieved data for 7 players
+2026-05-04 21:12:10,642 - __main__ - INFO - Tool get_multiple_players_profiles executed successfully

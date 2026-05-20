@@ -1,0 +1,18 @@
+[
+  {
+    "role": "user",
+    "content": "Im new to screenwriting this is a pretty rough draft, unfinished of my first screenplay im working on, give me technical tips on the formatting (even though its txt file) you can also ask questions if you want clarification"
+  },
+  {
+    "role": "assistant",
+    "content": "Great job on your first screenplay! For a rough draft, you've got a solid foundation. Here are some technical formatting tips:\n\n## Formatting Issues to Address:\n\n**1. Character Introductions**\n- First time a character appears, their name should be in ALL CAPS\n- You did this well with BRICK, JERRY LEFTON, but missed it with some others (Mary, Cook)\n\n**2. Parentheticals**\n- These should be used sparingly - you're using them well but sometimes over-using\n- Example: Instead of \"JERRY (exasperated) Yes.\" you could show this through action or dialogue\n\n**3. Scene Headings**\n- You're inconsistent with DAY/NIGHT\n- Some scenes have CONTINUOUS when they should have time markers\n- Example: \"INT. POLICE STATION - PARKING LOT - DAY\" should be \"EXT.\" since parking lots are exterior\n\n**4. Action Lines**\n- Keep to 3-4 lines max per paragraph\n- Some of your action blocks run too long (like the extended description in the parking lot scene)\n- Break them up for better readability\n\n**5. Camera Directions**\n- Generally avoid these (CAMERA DOLLIES, HOLD ON, etc.) unless absolutely necessary\n- Let the director make these choices\n- Replace with action that implies the shot\n\n**6. Transitions**\n- You use CUT TO: frequently - this is usually unnecessary\n- DISSOLVE TO: is good for time passages\n- Most scene changes don't need transitions\n\n**7. Dialogue Issues**\n- Some speeches run too long and could be broken up with action\n- Watch for characters explaining too much (on-the-nose dialogue)\n\n## Questions for Clarification:\n\n1. What's the genre/tone you're going for? It reads like a noir-ish mystery with comedic elements - is that intentional?\n\n2. The relationship between Jerry and Brick from high school - how important is this backstory?\n\n3. What's the significance of Maya being married to the mayor? This seems like a major plot point that could be emphasized more.\n\n4. The Cook's apartment as a \"shelter\" - what exactly is this place? The concept is interesting but unclear.\n\nWould you like me to show you how to reformat a specific scene as an example?"
+  },
+  {
+    "role": "user",
+    "content": "exit"
+  },
+  {
+    "role": "assistant",
+    "content": "Thanks for sharing your screenplay! Good luck with your writing, and feel free to come back if you need more feedback on your revisions. Keep writing - you've got a compelling story developing here!"
+  }
+]

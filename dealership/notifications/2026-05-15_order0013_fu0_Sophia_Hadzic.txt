@@ -1,0 +1,15 @@
+From: smythevolvocars.com <noreply@smythevolvocars.com>
+To: Sophia Hadzic
+Date: 2026-05-15
+Subject: Your license plate is ready for pickup
+X-Notification-Type: INITIAL
+X-Order-Id: 13
+X-Vehicle: 2026 Volvo XC40 Recharge
+X-Delivery-Method: pickup
+
+Dear Sophia Hadzic,
+
+Sophia, we're happy to let you know that the license plate for your 2026 Volvo XC40 Recharge is now ready at Smythe Volvo Cars. Feel free to stop by during our regular hours at your earliest convenience. We're excited to help you complete your ownership experience!
+
+Best regards,
+The team at smythevolvocars.com

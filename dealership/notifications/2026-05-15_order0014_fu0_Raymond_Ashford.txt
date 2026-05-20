@@ -1,0 +1,15 @@
+From: smythevolvocars.com <noreply@smythevolvocars.com>
+To: Raymond Ashford
+Date: 2026-05-15
+Subject: Your license plate is ready for pickup
+X-Notification-Type: INITIAL
+X-Order-Id: 14
+X-Vehicle: 2026 Volvo XC90 T8 Recharge
+X-Delivery-Method: pickup
+
+Dear Raymond Ashford,
+
+We're delighted to inform you, Raymond, that the license plate for your 2026 Volvo XC90 T8 Recharge is now ready for pickup at Smythe Volvo Cars. Please come by at a time that works for you and we'll take care of everything quickly. Thank you, and we look forward to your visit!
+
+Best regards,
+The team at smythevolvocars.com

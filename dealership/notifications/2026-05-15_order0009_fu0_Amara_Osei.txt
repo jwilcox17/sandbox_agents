@@ -1,0 +1,15 @@
+From: smythevolvocars.com <noreply@smythevolvocars.com>
+To: Amara Osei
+Date: 2026-05-15
+Subject: Your license plate is ready for pickup
+X-Notification-Type: INITIAL
+X-Order-Id: 9
+X-Vehicle: 2026 Volvo XC60 T8 Recharge
+X-Delivery-Method: pickup
+
+Dear Amara Osei,
+
+We're happy to share that the license plate for your 2026 Volvo XC60 T8 Recharge is ready and available at Smythe Volvo Cars, Amara. Please come by during our business hours at a time that suits you. We're looking forward to seeing you!
+
+Best regards,
+The team at smythevolvocars.com

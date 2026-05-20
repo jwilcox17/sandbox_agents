@@ -1,0 +1,8 @@
+From: Linda Okafor
+To: smythevolvocars.com <service@smythevolvocars.com>
+Date: 2026-05-15
+Subject: Re: (follow-up touchpoint 1)
+X-Record-Id: 4
+X-Sentiment: issue
+
+Hi, I actually wanted to mention that since the software update was applied, my XC90 PHEV has had trouble connecting to the Volvo app — it keeps saying the car is offline even when it's on and charged. This didn't happen before I brought it in, so I'm wondering if something went wrong with the update.

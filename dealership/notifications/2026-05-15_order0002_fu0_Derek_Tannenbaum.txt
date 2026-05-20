@@ -1,0 +1,15 @@
+From: smythevolvocars.com <noreply@smythevolvocars.com>
+To: Derek Tannenbaum
+Date: 2026-05-15
+Subject: Your license plate has shipped
+X-Notification-Type: INITIAL
+X-Order-Id: 2
+X-Vehicle: 2026 Volvo XC60
+X-Delivery-Method: ship
+
+Dear Derek Tannenbaum,
+
+Great news, Derek — the license plate for your 2026 Volvo XC60 has been shipped and is on its way to you. Please keep an eye on your mailbox and allow a few business days for delivery. Thank you for your patience, and we hope you're enjoying your new vehicle!
+
+Best regards,
+The team at smythevolvocars.com

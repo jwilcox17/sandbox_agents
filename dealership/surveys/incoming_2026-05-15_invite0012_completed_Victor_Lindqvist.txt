@@ -1,0 +1,10 @@
+From: Victor Lindqvist
+To: smythevolvocars.com <surveys@smythevolvocars.com>
+Date: 2026-05-15
+Subject: Re: initial (invite 12)
+X-Invite-Id: 12
+X-Outcome: completed
+X-NPS-Score: 7
+X-Feedback-Summary: Satisfied with the XC60 but felt the delivery walkthrough was rushed and incomplete.
+
+The XC60 is a great vehicle and I'm enjoying it so far. My only comment is that the delivery walkthrough felt a bit rushed and I still have questions about some of the tech features.

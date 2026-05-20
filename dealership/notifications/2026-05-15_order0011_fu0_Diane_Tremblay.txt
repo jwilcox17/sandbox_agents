@@ -1,0 +1,15 @@
+From: smythevolvocars.com <noreply@smythevolvocars.com>
+To: Diane Tremblay
+Date: 2026-05-15
+Subject: Your license plate has shipped
+X-Notification-Type: INITIAL
+X-Order-Id: 11
+X-Vehicle: 2026 Volvo XC90
+X-Delivery-Method: ship
+
+Dear Diane Tremblay,
+
+Diane, we're glad to share that the license plate for your 2026 Volvo XC90 has been shipped and is making its way to you. Please allow a few business days for delivery and don't hesitate to get in touch if you have any questions. Thank you for choosing Smythe Volvo Cars!
+
+Best regards,
+The team at smythevolvocars.com

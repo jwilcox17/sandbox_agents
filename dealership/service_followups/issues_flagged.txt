@@ -1,0 +1,14 @@
+[2026-05-15] record 4 (Linda Okafor @ smythevolvocars.com)
+  Vehicle: 2026 Volvo XC90 plug-in hybrid
+  Service: Recall remedy — software update (completed 2026-02-06, 98 days ago)
+  Touchpoint: 1
+  Customer report: Hi, I actually wanted to mention that since the software update was applied, my XC90 PHEV has had trouble connecting to the Volvo app — it keeps saying the car is offline even when it's on and charged. This didn't happen before I brought it in, so I'm wondering if something went wrong with the update.
+  Action: cadence stopped — needs human follow-up.
+
+[2026-05-15] record 14 (Yuki Nakamura @ smythevolvocars.com)
+  Vehicle: 2026 Volvo XC40
+  Service: Brake pad replacement (completed 2026-04-08, 37 days ago)
+  Touchpoint: 1
+  Customer report: Hi there — I've been meaning to reach out actually. I've been noticing a faint grinding noise when I brake at low speeds, which I didn't have before the pad replacement. It's not super loud but it's definitely there and a bit concerning.
+  Action: cadence stopped — needs human follow-up.
+

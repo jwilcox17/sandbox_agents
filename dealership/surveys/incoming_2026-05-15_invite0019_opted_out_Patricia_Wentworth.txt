@@ -1,0 +1,8 @@
+From: Patricia Wentworth
+To: smythevolvocars.com <surveys@smythevolvocars.com>
+Date: 2026-05-15
+Subject: Re: initial (invite 19)
+X-Invite-Id: 19
+X-Outcome: opted_out
+
+I'd prefer not to receive further survey emails. Thank you.

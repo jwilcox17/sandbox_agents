@@ -1,0 +1,15 @@
+From: smythevolvocars.com <noreply@smythevolvocars.com>
+To: Natalie Sorrento
+Date: 2026-05-15
+Subject: Your license plate is ready for pickup
+X-Notification-Type: INITIAL
+X-Order-Id: 7
+X-Vehicle: 2026 Volvo XC60
+X-Delivery-Method: pickup
+
+Dear Natalie Sorrento,
+
+Good news, Natalie — the license plate for your 2026 Volvo XC60 is now ready for pickup at Smythe Volvo Cars. Please stop by at your earliest convenience and our team will be happy to assist you. We look forward to welcoming you in!
+
+Best regards,
+The team at smythevolvocars.com

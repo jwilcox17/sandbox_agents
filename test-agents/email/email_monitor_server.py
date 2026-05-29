@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import re
+import sys
 from datetime import datetime
 from email.header import decode_header
 from email.utils import parsedate_tz, mktime_tz
@@ -30,8 +31,8 @@ DEFAULT_TIMEOUT = 30.0
 IMAP_SERVER = "imap.gmail.com"
 IMAP_PORT = 993
 
-EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS", "YOUR_EMAIL")
-APP_PASSWORD = os.getenv("APP_PASSWORD", "YOUR_APPPASS")
+EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS", "")
+APP_PASSWORD = os.getenv("APP_PASSWORD", "")
 
 class EmailStats(BaseModel):
     total_emails: int
@@ -634,8 +635,11 @@ def _calculate_productivity_score(type_percentages: Dict[str, float]) -> Dict[st
     }
 
 async def main():
+    if not EMAIL_ADDRESS or not APP_PASSWORD:
+        print("ERROR: EMAIL_ADDRESS and APP_PASSWORD environment variables must be set.", file=sys.stderr)
+        sys.exit(1)
     logger.info("Starting Email Monitor Server...")
-    
+
     if await gmail_monitor.connect():
         logger.info("Gmail connection successful")
         gmail_monitor.disconnect()

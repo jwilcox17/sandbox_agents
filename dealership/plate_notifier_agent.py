@@ -47,16 +47,17 @@ from pathlib import Path
 from typing import Optional
 
 from anthropic import Anthropic
+from dotenv import load_dotenv
 
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
 
-MODEL = "claude-sonnet-4-6"
+MODEL = "claude-haiku-4-5"
 MAX_TOKENS = 8000
 
 DEFAULT_ORDERS_PER_DEALER = 20
-NOTIFICATIONS_DIR = Path("/logs/notifications")
+NOTIFICATIONS_DIR = Path(os.environ["SANDBOX_DATA_DIR"]) / "dealership" / "notifications"
 
 # Deterministic state machine: how long a plate spends in each pre-ready stage.
 # Random within these ranges, seeded by order_id so each run is reproducible.
@@ -521,38 +522,6 @@ def record_notification(
 # ---------------------------------------------------------------------------
 
 
-def load_dotenv(path: str = ".env") -> int:
-    """Load KEY=value lines from a .env file into os.environ.
-
-    Already-set process-environment values win (shell export takes precedence
-    over the file). Supports unquoted, "double-quoted", and 'single-quoted'
-    values; ignores blank lines and `#` comments. Returns the number of
-    variables actually loaded (skipped ones don't count).
-    """
-    if not os.path.exists(path):
-        return 0
-    loaded = 0
-    with open(path, encoding="utf-8") as f:
-        for raw in f:
-            line = raw.strip()
-            if not line or line.startswith("#"):
-                continue
-            if line.startswith("export "):
-                line = line[len("export "):].lstrip()
-            if "=" not in line:
-                continue
-            key, _, value = line.partition("=")
-            key = key.strip()
-            value = value.strip()
-            if (len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"')):
-                value = value[1:-1]
-            if not key or key in os.environ:
-                continue
-            os.environ[key] = value
-            loaded += 1
-    return loaded
-
-
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
@@ -585,9 +554,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         return 2
 
     # Load .env from cwd if present (shell env still wins)
-    loaded = load_dotenv()
-    if loaded:
-        log.info("loaded %d variable(s) from .env", loaded)
+    load_dotenv()
 
     if not os.environ.get("ANTHROPIC_API_KEY"):
         log.error(

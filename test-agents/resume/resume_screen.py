@@ -31,9 +31,9 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).parent
 JOB_DESC_DIR = BASE_DIR / "job_descriptions"
-DB_PATH = BASE_DIR / "data" / "applicants.db"
+DB_PATH = Path(os.environ.get("SANDBOX_DATA_DIR", str(BASE_DIR / "data"))) / "resume" / "applicants.db"
 
-SCORING_MODEL = os.getenv("SCORING_MODEL", "claude-sonnet-4-5-20250929")
+SCORING_MODEL = os.getenv("SCORING_MODEL", "claude-haiku-4-5")
 
 REJECT_CEILING = 70
 FORWARD_FLOOR = 90

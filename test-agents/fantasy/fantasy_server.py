@@ -1,3 +1,4 @@
+import os
 import sys
 import logging
 import anyio
@@ -13,7 +14,7 @@ def setup_logging():
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        filename='fantasy_baseball_server.log'
+        filename=os.path.join(os.environ.get("SANDBOX_DATA_DIR", "."), "fantasy", "fantasy_baseball_server.log")
     )
     return logging.getLogger(__name__)
 

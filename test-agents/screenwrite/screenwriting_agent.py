@@ -72,7 +72,8 @@ class FountainParser:
 
 class ScreenwritingProfessor:
     def __init__(self, project_name: str = "my_script"):
-        self.project_dir = Path(f"./projects/{project_name}")
+        base = Path(os.environ.get("SANDBOX_DATA_DIR", ".")) / "screenwrite" / "projects"
+        self.project_dir = base / project_name
         self.project_dir.mkdir(parents=True, exist_ok=True)
         
         api_key = os.getenv("ANTHROPIC_API_KEY")

@@ -95,7 +95,7 @@ class ReportClient:
             sys.exit(1)
 
         self.anthropic = Anthropic(api_key=api_key)
-        self.model = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-5")
+        self.model = os.getenv("ANTHROPIC_MODEL", "claude-haiku-4-5")
         self.max_tokens = int(os.getenv("MAX_TOKENS", "8000"))
         self.session = None
         self.exit_stack = AsyncExitStack()
@@ -205,7 +205,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--output",
         type=Path,
-        default=BASE_DIR / "reports" / f"report_{datetime.now().strftime('%Y%m%d')}.md",
+        default=Path(os.environ.get("SANDBOX_DATA_DIR", str(BASE_DIR))) / "fantnew" / "reports" / f"report_{datetime.now().strftime('%Y%m%d')}.md",
         help="Output file path (default: reports/report_YYYYMMDD.md)",
     )
     args = parser.parse_args()

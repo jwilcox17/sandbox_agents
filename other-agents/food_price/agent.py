@@ -13,13 +13,16 @@ import sys
 from typing import Optional
 
 from anthropic import Anthropic
-from dotenv import load_dotenv
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 from tools import TOOL_SCHEMAS, dispatch
 
-load_dotenv()
-
-MODEL = "claude-opus-4-7"
+MODEL = "claude-haiku-4-5"
 MAX_ITERATIONS = 25
 
 SYSTEM_PROMPT = """You are a food-delivery price comparison agent.

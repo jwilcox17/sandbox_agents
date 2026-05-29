@@ -20,7 +20,7 @@ Required:
   ANTHROPIC_API_KEY (env var, or paste into the CONFIG block below)
 
 Optional:
-  ANTHROPIC_MODEL (default: claude-sonnet-4-5-20250929)
+  ANTHROPIC_MODEL (default: claude-haiku-4-5)
 
 Usage:
   python ai_readiness.py https://example.com
@@ -49,13 +49,13 @@ from bs4 import BeautifulSoup
 # CONFIG — paste your key here, or leave blank to use the env var.
 # ---------------------------------------------------------------------------
 # WARNING: if you commit this file to git, your key goes with it.
-ANTHROPIC_API_KEY = "REDACTED"   # e.g. "sk-ant-api03-..."
+ANTHROPIC_API_KEY = ""   # e.g. "sk-ant-api03-..." — set ANTHROPIC_API_KEY env var instead
 
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
 
-ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-5-20250929")
+ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-haiku-4-5")
 RAW_HTML_CHAR_LIMIT = 80_000  # cap what we send to Claude
 RAW_FETCH_HEADERS = {
     "User-Agent": "ai-readiness-cli/1.0 (+https://github.com/)",

@@ -1,0 +1,33 @@
+# ============================================================================
+# sandbox_agents — logrotate config (template)
+# ============================================================================
+#
+# Rotates the daily cron log files at $SANDBOX_DATA_DIR/cron-logs/.
+# Invoked nightly from the user's own crontab (see crontab.txt.example);
+# no root or system logrotate installation required.
+#
+# This file is a template: setup.py renders it into
+# $SANDBOX_DATA_DIR/logrotate.conf with <sandbox-data-dir> substituted.
+#
+# Directives (one per line; logrotate does NOT accept trailing comments):
+#   daily          - rotate every day
+#   rotate 7       - keep 7 days of history
+#   compress       - gzip rotated files
+#   delaycompress  - leave yesterday's uncompressed (easier to tail)
+#   missingok      - fine if a log file doesn't exist yet
+#   notifempty     - don't rotate empty files
+#   copytruncate   - copy + truncate, safe when agents are mid-write
+#   dateext        - name rotated files with the date
+# ============================================================================
+
+<sandbox-data-dir>/cron-logs/*.log {
+    daily
+    rotate 7
+    compress
+    delaycompress
+    missingok
+    notifempty
+    copytruncate
+    dateext
+    dateformat -%Y-%m-%d
+}

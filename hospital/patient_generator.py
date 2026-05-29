@@ -38,7 +38,10 @@ except ImportError:
 # DB
 # ============================================================
 
-DB_PATH = os.environ.get("PATIENTS_DB", "/logs/patients.db")
+DB_PATH = os.environ.get(
+    "PATIENTS_DB",
+    os.path.join(os.environ.get("SANDBOX_DATA_DIR", ""), "hospital", "patients.db")
+)
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS patients (
@@ -516,7 +519,7 @@ TOOL_SCHEMAS = [
 # Agent loop
 # ============================================================
 
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-haiku-4-5"
 SYSTEM_PROMPT = """You are a fake-patient data generator agent. You help an
 engineer populate a SQLite test database with realistic, medically coherent
 patient records for development and testing of healthcare software (in

@@ -31,9 +31,13 @@ except ImportError:
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
-ANTHROPIC_API_KEY = "REDACTED"
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 GSC_TOKEN_FILE    = "gsc_token.json"
 GSC_SCOPES        = ["https://www.googleapis.com/auth/webmasters.readonly"]
+
+if not ANTHROPIC_API_KEY:
+    print("ERROR: ANTHROPIC_API_KEY environment variable is not set.", file=sys.stderr)
+    sys.exit(1)
 
 _anthropic = anthropic.AsyncAnthropic(api_key=ANTHROPIC_API_KEY)
 
@@ -152,7 +156,7 @@ async def fetch_gsc(domain: str) -> dict:
 
 async def generate_keyword(markdown: str) -> str:
     msg = await _anthropic.messages.create(
-        model="claude-haiku-4-5-20251001",
+        model="claude-haiku-4-5",
         max_tokens=100,
         tools=[{
             "name": "output_keyword",
@@ -178,7 +182,7 @@ async def generate_keyword(markdown: str) -> str:
 
 async def research_keyword(keyword: str) -> str:
     msg = await _anthropic.messages.create(
-        model="claude-sonnet-4-5",
+        model="claude-haiku-4-5",
         max_tokens=2048,
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
         system=(
@@ -244,7 +248,7 @@ Target keyword: "{keyword}"
 Write the full report now."""
 
     msg = await _anthropic.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-haiku-4-5",
         max_tokens=4096,
         system=REPORT_SYSTEM,
         messages=[{"role": "user", "content": prompt}],

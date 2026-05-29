@@ -40,8 +40,7 @@ import anthropic  # pip install anthropic
 # reviews, and it keeps the cost-per-review low. Swap to "claude-sonnet-4-6"
 # (mid-tier) or "claude-opus-4-7" (top-tier) for richer prose at higher cost.
 MODEL = "claude-haiku-4-5"
-DB_PATH = "/logs/reviews.db"
-ANTHROPIC_API_KEY = "REDACTED"
+DB_PATH = os.path.join(os.environ.get("SANDBOX_DATA_DIR", ""), "cust_rev", "reviews.db")
 
 # ---------------------------------------------------------------------------
 # Database layer

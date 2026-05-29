@@ -4,6 +4,7 @@ import imaplib
 import json
 import logging
 import os
+import sys
 from datetime import datetime
 from email.header import decode_header
 from email.utils import parsedate_tz, mktime_tz
@@ -33,8 +34,8 @@ DEFAULT_TIMEOUT = 30.0
 IMAP_SERVER = "imap.gmail.com"
 IMAP_PORT = 993
 
-EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS", "jwilcox.email@gmail.com")
-APP_PASSWORD = os.getenv("APP_PASSWORD", "ijexywomspgwpmvx")
+EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS", "")
+APP_PASSWORD = os.getenv("APP_PASSWORD", "")
 
 
 class EmailMessage(BaseModel):
@@ -570,8 +571,11 @@ def _generate_recommendations(unread_emails: List[Dict[str, Any]], recent_emails
     return recommendations
 
 async def main():
+    if not EMAIL_ADDRESS or not APP_PASSWORD:
+        print("ERROR: EMAIL_ADDRESS and APP_PASSWORD environment variables must be set.", file=sys.stderr)
+        sys.exit(1)
     logger.info("Starting Email Summarizer Server...")
-    
+
     if await gmail_summarizer.connect():
         logger.info("Gmail connection successful")
         gmail_summarizer.disconnect()

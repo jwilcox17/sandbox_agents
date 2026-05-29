@@ -3,7 +3,9 @@ import json
 import logging
 from typing import Dict, List, Any, Optional
 
-DEFAULT_CONFIG_PATH = "fantasy_league.json"
+DEFAULT_CONFIG_PATH = os.path.join(
+    os.environ.get("SANDBOX_DATA_DIR", "."), "fantasy", "fantasy_league.json"
+)
 
 class FantasyConfigManager:
     """Manager for fantasy baseball league configuration file"""

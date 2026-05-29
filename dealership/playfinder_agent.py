@@ -46,7 +46,7 @@ from anthropic import Anthropic
 # Constants
 # ---------------------------------------------------------------------------
 
-MODEL = "claude-sonnet-4-6"
+MODEL = "claude-haiku-4-5"
 MAX_TOKENS_GENERATE = 8000
 MAX_TOKENS_REPORT = 8000
 DEFAULT_NUM_CUSTOMERS_PER_DEALER = 30
@@ -682,7 +682,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             d for d in tables_by_domain.values() if d not in present
         ]
         if domains_needing_gen:
-            client = Anthropic(api_key="REDACTED")
+            client = Anthropic()
             for domain in domains_needing_gen:
                 table = next(
                     t for t, dom in tables_by_domain.items() if dom == domain
@@ -728,7 +728,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         # Generate the salesperson-ready report
         prompt = build_report_prompt(plays)
         log.info("report prompt: %d chars", len(prompt))
-        client = Anthropic(api_key="REDACTED")
+        client = Anthropic()
         try:
             report = generate_report(client, prompt)
         except Exception as e:

@@ -82,7 +82,7 @@ def find_prospects(query: str, foundation: dict, count: int,
     )
 
     resp = client.messages.create(
-        model="claude-sonnet-4-5",
+        model="claude-haiku-4-5",
         max_tokens=4096,
         system=SYSTEM_PROMPT,
         tools=[{"type": "web_search_20250305", "name": "web_search",

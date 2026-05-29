@@ -19,7 +19,7 @@ import json
 import feedparser
 import anthropic
 
-MODEL = "claude-sonnet-4-6"
+MODEL = "claude-haiku-4-5"
 # RSS feeds the agent is allowed to fetch from.
 GAMING_FEEDS = {
     "ign":              "https://feeds.feedburner.com/ign/all",
@@ -89,7 +89,7 @@ SYSTEM_PROMPT = (
 
 def run_agent(user_request: str, max_iterations: int = 5) -> str:
     """Run the tool-use loop and return Claude's final report text."""
-    client = anthropic.Anthropic(api_key="REDACTED")
+    client = anthropic.Anthropic()
     messages = [{"role": "user", "content": user_request}]
 
     for _ in range(max_iterations):

@@ -40,7 +40,10 @@ except ImportError:
 # DB
 # ============================================================
 
-DB_PATH = os.environ.get("PATIENTS_DB", "patients.db")
+DB_PATH = os.environ.get(
+    "PATIENTS_DB",
+    os.path.join(os.environ.get("SANDBOX_DATA_DIR", ""), "hospital", "patients.db")
+)
 
 # This agent owns lab_locations + appointments. The patient tables
 # (patients, lab_orders, ...) are owned by patient_generator.py.
@@ -678,7 +681,7 @@ TOOL_SCHEMAS = [
 # Agent loop
 # ============================================================
 
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-haiku-4-5"
 SYSTEM_PROMPT = """You are the Lab Appointment Scheduling Agent for Twin Health.
 You help patients book, confirm, reschedule, and cancel diagnostic lab
 appointments at Quest Diagnostics and LabCorp facilities, and keep them on

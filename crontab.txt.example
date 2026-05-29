@@ -1,0 +1,141 @@
+# ============================================================================
+# sandbox_agents — example crontab
+# ============================================================================
+#
+# HOW TO USE
+# ----------
+# 1. Copy this file somewhere and fill in <repo-path> and <venv-path>.
+# 2. Install:  crontab /path/to/your-filled-in-crontab.txt
+#
+# PLACEHOLDER LEGEND
+# ------------------
+#   <repo-path>   — absolute path to the sandbox_agents repo checkout
+#                   e.g. /home/agentdev/sandbox_agents
+#   <venv-path>   — absolute path to the shared Python virtualenv
+#                   e.g. /home/agentdev/venv
+#
+# ENV / CREDENTIALS
+# -----------------
+# Scripts load credentials via python-dotenv from a .env file in the repo root.
+# Do NOT embed ANTHROPIC_API_KEY or other secrets here.
+# SANDBOX_DATA_DIR must be set as a cron environment variable (see below) OR
+# you can rely on it being exported from your shell profile — but cron does not
+# source shell profiles, so the explicit assignment below is safest.
+#
+# HEARTBEAT WRAPPER
+# -----------------
+# Every job is invoked via `bin/run_agent.py <name> <cmd...>`. The wrapper
+# passes stdout/stderr through unchanged and writes a heartbeat record to
+# $SANDBOX_DATA_DIR/health/<name>.json after the command exits, capturing
+# start/finish time, duration, and exit code. To check on the fleet:
+#   ls -lt $SANDBOX_DATA_DIR/health/
+#   jq -r '. | "\(.agent)\t\(.exit_code)\t\(.finished_at)"' $SANDBOX_DATA_DIR/health/*.json
+#
+SANDBOX_DATA_DIR=/your/data/dir
+
+# ============================================================================
+# Log rotation & artifact pruning
+# ============================================================================
+
+# Rotate cron logs nightly (00:05) — keeps 7 days, gzips older days
+5 0 * * * <repo-path>/bin/run_agent.py logrotate <logrotate-path> --state $SANDBOX_DATA_DIR/logrotate.state $SANDBOX_DATA_DIR/logrotate.conf >> $SANDBOX_DATA_DIR/cron-logs/_meta.log 2>&1
+
+# Prune output artifacts older than 30 days (00:10)
+10 0 * * * <repo-path>/bin/run_agent.py artifact_prune bash -c 'find $SANDBOX_DATA_DIR/dealership/notifications $SANDBOX_DATA_DIR/dealership/surveys $SANDBOX_DATA_DIR/dealership/service_followups $SANDBOX_DATA_DIR/fantnew/reports -type f -mtime +30 -delete' >> $SANDBOX_DATA_DIR/cron-logs/_meta.log 2>&1
+
+# ============================================================================
+# Resume screening
+# ============================================================================
+
+# Screen all PDFs in the resumes directory (runs daily at 15:54)
+54 15 * * * <repo-path>/bin/run_agent.py resume_screen bash -c 'for f in <repo-path>/test-agents/resume/resumes/*.pdf; do <venv-path>/bin/python -u <repo-path>/test-agents/resume/resume_screen.py "$f" senior_python_dev; done' >> $SANDBOX_DATA_DIR/cron-logs/resume.log 2>&1
+
+# Show flagged applicants pending review (15:56)
+56 15 * * * <repo-path>/bin/run_agent.py resume_review <venv-path>/bin/python <repo-path>/test-agents/resume/resume_screen.py --review >> $SANDBOX_DATA_DIR/cron-logs/resume.log 2>&1
+
+# Print scores for a job (15:57)
+57 15 * * * <repo-path>/bin/run_agent.py resume_scores <venv-path>/bin/python <repo-path>/test-agents/resume/resume_screen.py --scores senior_python_dev >> $SANDBOX_DATA_DIR/cron-logs/resume.log 2>&1
+
+# ============================================================================
+# Fantasy baseball
+# ============================================================================
+
+# Daily fantasy baseball report (16:30)
+30 16 * * * <repo-path>/bin/run_agent.py fantasy_daily_report <venv-path>/bin/python <repo-path>/test-agents/fantnew/daily_report.py >> $SANDBOX_DATA_DIR/cron-logs/ball_report.log 2>&1
+
+# ============================================================================
+# Customer reviews
+# ============================================================================
+
+# Generate a random review every 4 hours
+0 */4 * * * <repo-path>/bin/run_agent.py review_random <venv-path>/bin/python <repo-path>/other-agents/cust_rev/review_agent.py --random "Enterprise system for AI companies and developers called Aurite" >> $SANDBOX_DATA_DIR/cron-logs/customer.log 2>&1
+
+# List the 5 most recent reviews nightly (01:55)
+55 1 * * * <repo-path>/bin/run_agent.py review_list <venv-path>/bin/python <repo-path>/other-agents/cust_rev/review_agent.py --list --last 5 >> $SANDBOX_DATA_DIR/cron-logs/customer.log 2>&1
+
+# ============================================================================
+# Gaming news
+# ============================================================================
+
+# Nightly gaming news digest (02:10)
+10 2 * * * <repo-path>/bin/run_agent.py gaming_news <venv-path>/bin/python <repo-path>/other-agents/game_news/gaming_news_agent.py >> $SANDBOX_DATA_DIR/cron-logs/game_news.log 2>&1
+
+# ============================================================================
+# AI readiness
+# ============================================================================
+
+# Nightly AI-readiness test against a live URL (23:12)
+12 23 * * * <repo-path>/bin/run_agent.py ai_readiness <venv-path>/bin/python <repo-path>/other-agents/ai_ready/test_ai_readiness.py --live https://en.wikipedia.org/wiki/Mission:_Impossible_2 >> $SANDBOX_DATA_DIR/cron-logs/ai_ready.log 2>&1
+
+# ============================================================================
+# SEO agent
+# ============================================================================
+
+# Nightly SEO analysis (23:00)
+0 23 * * * <repo-path>/bin/run_agent.py seo_audit <venv-path>/bin/python <repo-path>/other-agents/seo_agent/seo_agent.py https://www.tankathon.com/ >> $SANDBOX_DATA_DIR/cron-logs/seo_agent.log 2>&1
+
+# ============================================================================
+# Dealership pipeline  (sequential; all share the same inv.db cache)
+# ============================================================================
+
+# 1. Scrape inventory (04:30)
+30 4 * * * <repo-path>/bin/run_agent.py dealership_scrape <venv-path>/bin/python <repo-path>/dealership/dealership_agent.py smythevolvocars.com volvocarsprinceton.com --cache $SANDBOX_DATA_DIR/dealership/inv.db >> $SANDBOX_DATA_DIR/cron-logs/dealership.log 2>&1
+
+# 2. Find play-finder matches (04:35)
+35 4 * * * <repo-path>/bin/run_agent.py dealership_playfinder <venv-path>/bin/python <repo-path>/dealership/playfinder_agent.py --cache $SANDBOX_DATA_DIR/dealership/inv.db >> $SANDBOX_DATA_DIR/cron-logs/dealership.log 2>&1
+
+# 3. Plate notifications (05:00)
+0  5 * * * <repo-path>/bin/run_agent.py dealership_plate <venv-path>/bin/python <repo-path>/dealership/plate_notifier_agent.py --cache $SANDBOX_DATA_DIR/dealership/inv.db >> $SANDBOX_DATA_DIR/cron-logs/dealership.log 2>&1
+
+# 4. Service follow-ups (05:10)
+10 5 * * * <repo-path>/bin/run_agent.py dealership_service <venv-path>/bin/python <repo-path>/dealership/service_followup_agent.py --cache $SANDBOX_DATA_DIR/dealership/inv.db >> $SANDBOX_DATA_DIR/cron-logs/dealership.log 2>&1
+
+# 5. Survey reminders (05:15)
+15 5 * * * <repo-path>/bin/run_agent.py dealership_survey <venv-path>/bin/python <repo-path>/dealership/survey_reminder_agent.py --cache $SANDBOX_DATA_DIR/dealership/inv.db >> $SANDBOX_DATA_DIR/cron-logs/dealership.log 2>&1
+
+# ============================================================================
+# Hospital pipeline  (sequential)
+# ============================================================================
+
+# 1. Generate synthetic patients (06:00)
+0  6 * * * <repo-path>/bin/run_agent.py hospital_generate <venv-path>/bin/python <repo-path>/hospital/patient_generator.py generate --count 10 --seed 14 >> $SANDBOX_DATA_DIR/cron-logs/hospital.log 2>&1
+
+# 2. Generate lab locations (06:15)
+15 6 * * * <repo-path>/bin/run_agent.py hospital_labs <venv-path>/bin/python <repo-path>/hospital/lab_scheduling_agent.py generate-labs --count 5 >> $SANDBOX_DATA_DIR/cron-logs/hospital.log 2>&1
+
+# 3. Validate and report (06:18)
+18 6 * * * <repo-path>/bin/run_agent.py hospital_validate <venv-path>/bin/python <repo-path>/hospital/validation_reporter.py validate >> $SANDBOX_DATA_DIR/cron-logs/hospital.log 2>&1
+
+# ============================================================================
+# Food price comparison
+# ============================================================================
+
+# Daily food price comparison (07:00)
+0  7 * * * <repo-path>/bin/run_agent.py food_price <venv-path>/bin/python <repo-path>/other-agents/food_price/agent.py 'https://www.grubhub.com/restaurant/starbird-chicken-1241-w-el-camino-real-sunnyvale/549122/menu-item/324278795776?menu-item-options=2_6_7_8_9_10' 'https://order.starbirdchicken.com/venue/?id=3212&order-type=6&time=IIZWAUg&screen=menu' >> $SANDBOX_DATA_DIR/cron-logs/food.log 2>&1
+
+# ============================================================================
+# Funder prospects
+# ============================================================================
+
+# Daily funder prospect search (07:30)
+30 7 * * * <repo-path>/bin/run_agent.py funder_prospects <venv-path>/bin/python <repo-path>/other-agents/funder/prospect_finder.py "tech philanthropists supporting STEM in California" >> $SANDBOX_DATA_DIR/cron-logs/funder.log 2>&1

@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import re
+import sys
 from datetime import datetime, timezone, timedelta
 from email.header import decode_header
 from email.utils import parsedate_tz, mktime_tz
@@ -38,8 +39,8 @@ IMAP_SERVER = "imap.gmail.com"
 IMAP_PORT = 993
 
 # Email credentials from environment variables
-EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS", "jwilcox.email@gmail.com")
-APP_PASSWORD = os.getenv("APP_PASSWORD", "ijexywomspgwpmvx")
+EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS", "")
+APP_PASSWORD = os.getenv("APP_PASSWORD", "")
 
 # LLM Configuration (using same environment variables as client)
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
@@ -812,8 +813,11 @@ def _build_email_data(email: EmailMessage, summaries: List[Dict[str, Any]], inde
 
 async def main():
     """Main server function"""
+    if not EMAIL_ADDRESS or not APP_PASSWORD:
+        print("ERROR: EMAIL_ADDRESS and APP_PASSWORD environment variables must be set.", file=sys.stderr)
+        sys.exit(1)
     logger.info("Starting Email MCP Server...")
-    
+
     # Test Gmail connection on startup
     if await gmail_connector.connect():
         logger.info("Gmail connection successful")

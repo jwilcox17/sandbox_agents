@@ -40,7 +40,7 @@ from anthropic import Anthropic
 # past Cloudflare-style bot protection on dealer sites.
 IMPERSONATE = "chrome131"
 
-MODEL = "claude-sonnet-4-6"
+MODEL = "claude-haiku-4-5"
 MAX_TOKENS = 8000
 CONCURRENCY = 4
 HTTP_TIMEOUT = 30.0
@@ -914,7 +914,7 @@ def build_prompt(data: dict) -> str:
 
 
 def generate_report(prompt: str, model: str = MODEL, max_tokens: int = MAX_TOKENS) -> str:
-    client = Anthropic(api_key="REDACTED")
+    client = Anthropic()
     log.info("calling Claude (%s, max_tokens=%d)...", model, max_tokens)
     msg = client.messages.create(
         model=model,

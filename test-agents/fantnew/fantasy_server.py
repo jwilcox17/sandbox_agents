@@ -12,7 +12,9 @@ from mcp.server.stdio import stdio_server
 from fantasy_tools import FantasyBaseballTools
 from fantasy_config import DEFAULT_CONFIG_PATH
 
-DEFAULT_LOG_FILE = "/logs/fantasy_baseball_server.log"
+DEFAULT_LOG_FILE = os.path.join(
+    os.environ.get("SANDBOX_DATA_DIR", ""), "fantnew", "fantasy_baseball_server.log"
+)
 
 def setup_logging(log_file: str | os.PathLike = DEFAULT_LOG_FILE):
     """Configure logging for the server."""

@@ -42,7 +42,10 @@ except ImportError:
 # DB connection (read-only by default; seed-issues opens write)
 # ============================================================
 
-DB_PATH = os.environ.get("PATIENTS_DB", "patients.db")
+DB_PATH = os.environ.get(
+    "PATIENTS_DB",
+    os.path.join(os.environ.get("SANDBOX_DATA_DIR", ""), "hospital", "patients.db")
+)
 
 
 @contextmanager
@@ -460,7 +463,7 @@ TOOL_SCHEMAS = [
 # AI report generation (this is the only AI step in the pipeline)
 # ============================================================
 
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-haiku-4-5"
 
 REPORT_SYSTEM_PROMPT = """You are a healthcare data quality reporter for
 Twin Health. You receive structured validation findings produced by a
